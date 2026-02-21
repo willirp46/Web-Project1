@@ -7,6 +7,42 @@
     <style>
 
 
+
+/* --- RESPONSIVE PROJECT FIX --- */
+@media (max-width: 768px) {
+    /* Pastikan modal mengambil lebar penuh di HP */
+    #projectModal .modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    /* Ubah grid project menjadi 1 kolom saja di HP */
+    .project-grid-template {
+        grid-template-columns: 1fr !important; 
+        gap: 15px;
+    }
+
+    /* Sesuaikan tinggi gambar header di HP agar tidak terlalu makan tempat */
+    .project-img-header {
+        height: 150px;
+    }
+
+    /* Ukuran font judul project lebih kecil sedikit */
+    .project-info h4 {
+        font-size: 1.1rem;
+    }
+
+    /* Atur modal-overlay agar kontennya bisa di-scroll jika panjang */
+    .modal-overlay {
+        align-items: flex-start; /* Agar modal mulai dari atas jika konten panjang */
+        overflow-y: auto;
+        padding-top: 50px;
+    }
+}
+
+
 /* --- MODERN MUSIC PLAYER UI --- */
 
 /* Genre Container dibuat Grid agar lebih futuristik */
@@ -616,19 +652,15 @@ footer {
 
 </style>
 </head>
+
 <body>
-<canvas id="particleCanvas"> 
-
-
-</canvas>
-
    <audio id="bgMusic" src="" loop></audio>
-
+    
     <div id="genreModal" class="modal-overlay">
+    <canvas id="particleCanvas"></canvas>
         <div class="modal-content">
-            <h2 style="color: #00d4ff; margin-bottom: 15px;">🎵 Music Genres</h2>
+            <h2 style="color: #00d4ff; margin-bottom: 15px;">🎵 Music Genres</h2> 
             <div class="genre-list">
-
                 <div class="genre-item" onclick="toggleSongs('rock-songs')">Rock</div>
                 <div id="rock-songs" class="song-list">
                     <div class="song-item" onclick="initPlayer('assets/Music/David Cook_Always Be My Baby.mp3' , 'David Cook_Always Be My Baby')">
@@ -684,7 +716,7 @@ footer {
                     </div>
 
                     <div class="song-item" onclick="initPlayer('assets/Music/Mana_Te Liore Un Río.mp3', 'Mana_Te Liore Un Río')">
-                        ▶ Mana_Te Liore Un Río
+                        ▶ Mana - Te Liore Un Río
                     </div>
                 </div>
 
@@ -740,6 +772,7 @@ footer {
                     </div>
             </div>
         </div>
+    
 
             <div id="music-player-layer">
                 <p id="player-title" style="font-size: 0.9rem; color: #00d4ff; font-weight: bold; margin-bottom: 10px;"></p>
@@ -761,8 +794,8 @@ footer {
                 <button id="shuffleBtn" class="btn-player" onclick="toggleShuffle()" style="border-radius: 5px; font-size: 0.6rem;">🔀 SHUFFLE: OFF</button>
                 <button class="btn-player" onclick="controlMusic('stop')" style="border-color: #ff4444; color: #ff4444;">STOP</button>
             </div>
-    </div>
-
+        </div>
+        
             <button class="btn-close" onclick="closeGenreModal()">Close</button>
         </div>
     </div>
@@ -771,7 +804,7 @@ footer {
         <span id="musicIcon">🔇</span>
     </button>
 
-   
+       
     <div id="contactModal" class="modal-overlay">
     <div class="modal-content" style="max-width: 500px; position: relative; border-radius: 25px; overflow: hidden; background: #111; border: 2px solid #00d4ff;">
         <h2 style="color: #00d4ff; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">📞 HUBUNGI SAYA</h2>
@@ -1190,50 +1223,69 @@ document.querySelectorAll('.reveal').forEach(el => {
     observer.observe(el);
 });
 
+
+function openProjectModal() {
+    document.getElementById('projectModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Matikan scroll background
+}
+
+function closeProjectModal() {
+    document.getElementById('projectModal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Aktifkan kembali scroll background
+}
+
+// Tambahkan trigger agar klik di luar modal juga bisa menutup modal
+window.onclick = function(event) {
+    const projectModal = document.getElementById('projectModal');
+    const genreModal = document.getElementById('genreModal');
+    const contactModal = document.getElementById('contactModal');
+    
+    if (event.target == projectModal) closeProjectModal();
+    if (event.target == genreModal) closeGenreModal();
+    if (event.target == contactModal) closeContactModal();
+}
+
+
 </script>
 
 
 
 <div id="projectModal" class="modal-overlay">
     <div class="modal-content">
-        <h2 style="color: #007bb5; margin-bottom: 5px;">🚀 Project Experience</h2>
-        <p style="color: #666; margin-bottom: 20px;">Daftar Project Yang Pernah Saya Kerjakan</p>
+        <h2 style="color: #007bb5; margin-bottom: 20px;">🚀 Project Experience</h2>
+        
         
         <div class="project-grid-template">
             <div class="project-card-bright">
                 <div class="project-img-header">Project Satpas</div>
                 <div class="project-info">
                     <span class="project-tag">2009 - 2010</span>
-                    <h4>Menyiapkan koneksi untuk sistem SIM online antara Polres Tulang Bawang Tulang Bawang dengan Mabes Polri</h4>
+                    <h4>Koneksitas Sistem SIM online antara Polres Tulang Bawang Propinsi Lampung dengan Mabes Polri Jakarta</h4>
                     <p style="font-size: 0.85rem; color: #555;">Direktorat Lalu Lintas Markas Besar Kepolisian Nasional (Ditlantas Mabes Polri).</p>
                 </div>
             </div>
 
             <div class="project-card-bright">
-                <div class="project-img-header" style="background: linear-gradient(45deg, #ff9a9e, #fad0c4);">Project LPMP (Lembaga Penjamin Mutu Pendidikan) </div>
-                <div class="project-info">
+                <div class="project-img-header" style="background: linear-gradient(45deg, #ff9a9e, #fad0c4);">Project Lembaga Penjamin Mutu Pendidikan</div>
+                <div class="project-info">                                                                                
                     <span class="project-tag">2010</span>
-                        <h4>Proyek koneksi untuk sistem telekonferensi dari 
-                        kantor LPMP di Medan Propinsi Sumatera Utara</h4>
+                    <h4>Koneksitas Sistem Telekonferensi dari kantor LPMP di Medan Propinsi Sumatera Utara</h4>
                     <p style="font-size: 0.85rem; color: #555;">Divisi PMPTK Kementerian Pendidikan Nasional Republik Indonesia di Jakarta</p>
                 </div>
             </div>
 
             <div class="project-card-bright">
-                <div class="project-img-header" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb);">Project Universal Service Obligation (USO)</div>
+                <div class="project-img-header" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb);">Project Universal Service Obligation (USO)</div>                                                                                                                    
                 <div class="project-info">
                     <span class="project-tag">2010 - 2011</span>
-                    <h4>Survei dan penilaian lokasi yang tepat untuk stasiun internet dan penyiapan pemasangan stasiun internet di 45 kecamatan di Kalimantan Timur</h4>
+                    <h4>Survei dan penilaian lokasi yang tepat dan Setup Pusat Layanan Internet kecamatan via Antenna VSAT di 45 kecamatan di Kalimantan Timur</h4>
                     <p style="font-size: 0.85rem; color: #555;">Kementerian Komunikasi dan informatika</p>
                 </div>
             </div>
-            
-            </div>
-
+        </div>
         <button class="btn-close-dark" onclick="closeProjectModal()">Tutup Portofolio</button>
     </div>
 </div>
 
 </body>
-    
 </html>
