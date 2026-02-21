@@ -13,6 +13,94 @@
 
 
 
+
+/* --- BRIGHT PROJECT TEMPLATE STYLE --- */
+#projectModal .modal-content {
+    max-width: 95%; /* Membuat tampilan hampir penuh layar */
+    width: 1200px;
+    background: rgba(255, 255, 255, 0.95); /* Warna cerah putih transparan */
+    color: #333; /* Teks gelap agar kontras */
+    border: none;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.project-grid-template {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.project-card-bright {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.project-card-bright:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 212, 255, 0.3);
+}
+
+.project-img-header {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(45deg, #00d4ff, #00ff88); /* Placeholder warna cerah */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h4 {
+    color: #007bb5;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e0f7fa;
+    color: #00acc1;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.btn-close-dark {
+    background: #333;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-close-dark:hover {
+    background: #ff4444;
+}
+
+
+
+
+
+
+
 .genre-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -624,7 +712,7 @@ footer {
                     </div> 
 
                     <div class="song-item" onclick="initPlayer('assets/Music/Daniel Sahuleka_You Make My World So Colourful.mp3' , 'Daniel Sahuleka_You Make My World So Colour')">
-                        ▶ Daniel Sahuleka - You Make My World So Colourful
+                        ▶ Daniel Sahuleka - You Make My World So Clourful
                     </div> 
                 </div>
                 
@@ -751,7 +839,7 @@ footer {
 </section>
 
     <footer>
-        <p>&copy; 2026 Made By </p>
+        <p>&copy; 2026 Made By Wilnot</p>
     </footer>
 
     <script>
@@ -1107,25 +1195,42 @@ document.querySelectorAll('.reveal').forEach(el => {
 
 
 <div id="projectModal" class="modal-overlay">
-    <div class="modal-content" style="max-width: 600px;">
-        <h2 style="color: #00d4ff; margin-bottom: 20px;">💼 Project Experience</h2>
+    <div class="modal-content">
+        <h2 style="color: #007bb5; margin-bottom: 5px;">🚀 Project Experience</h2>
+        <p style="color: #666; margin-bottom: 20px;">Daftar Project Yang Pernah Saya Kerjakan</p>
         
-        <div class="project-list">
-            <div class="project-item">
-                <h4>1. Project Satpas "SIM Online Mabes Polri" (2009)</h4>
-                <p>Implementasi sistem integrasi data SIM secara terpusat untuk Mabes Polri.</p>
-                <div class="project-docs">   
+        <div class="project-grid-template">
+            <div class="project-card-bright">
+                <div class="project-img-header">Project Satpas</div>
+                <div class="project-info">
+                    <span class="project-tag">2009 - 2010</span>
+                    <h4>Menyiapkan koneksi untuk sistem SIM online antara Polres Tulang Bawang Tulang Bawang dengan Mabes Polri</h4>
+                    <p style="font-size: 0.85rem; color: #555;">Direktorat Lalu Lintas Markas Besar Kepolisian Nasional (Ditlantas Mabes Polri).</p>
                 </div>
             </div>
-            <div class="project-item">
-                <h4>2. Project USO (Universal Service Obligation) Kominfo (2010 & 2011)</h4>
-                <p>Program penyediaan layanan akses telekomunikasi dan informatika di wilayah terpencil. Terlibat dalam pengadaan dan optimasi infrastruktur IT di lapangan.</p>
-                <div class="project-docs">                  
-                </div>
-            </div>
-        </div>
 
-        <button class="btn-close" onclick="closeProjectModal()">Close</button>
+            <div class="project-card-bright">
+                <div class="project-img-header" style="background: linear-gradient(45deg, #ff9a9e, #fad0c4);">Project LPMP (Lembaga Penjamin Mutu Pendidikan) </div>
+                <div class="project-info">
+                    <span class="project-tag">2010</span>
+                        <h4>Proyek koneksi untuk sistem telekonferensi dari 
+                        kantor LPMP di Medan Propinsi Sumatera Utara</h4>
+                    <p style="font-size: 0.85rem; color: #555;">Divisi PMPTK Kementerian Pendidikan Nasional Republik Indonesia di Jakarta</p>
+                </div>
+            </div>
+
+            <div class="project-card-bright">
+                <div class="project-img-header" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb);">Project Universal Service Obligation (USO)</div>
+                <div class="project-info">
+                    <span class="project-tag">2010 - 2011</span>
+                    <h4>Survei dan penilaian lokasi yang tepat untuk stasiun internet dan penyiapan pemasangan stasiun internet di 45 kecamatan di Kalimantan Timur</h4>
+                    <p style="font-size: 0.85rem; color: #555;">Kementerian Komunikasi dan informatika</p>
+                </div>
+            </div>
+            
+            </div>
+
+        <button class="btn-close-dark" onclick="closeProjectModal()">Tutup Portofolio</button>
     </div>
 </div>
 
